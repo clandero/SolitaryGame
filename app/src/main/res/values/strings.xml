@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Tarea3</string>
+    <string name="app_name">SolitaryGame</string>
+    <string name="boton_agregaJugadores">Agrega jugadores iniciales</string>
+    <string name="boton_buscaJugadorPorId">Busca jugador por ID</string>
+    <string name="boton_buscaJugadorPorNombre">Busca jugador por nombre</string>
+    <string name="boton_eliminaJugador">Elimina el jugador</string>
+    <string name="boton_actualizaJugador">Actualiza el jugador</string>
+    <string name="boton_muestraJugadores">Muestra todos los jugadores</string>
+    <string name="boton_eliminaJugadores">Elimina todos los jugadores</string>
 </resources>
