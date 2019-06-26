@@ -13,7 +13,7 @@ public class Baraja {
     private Vector<Carta> mazo_pica;
     private Vector<Carta> mazo_trebol;
     private Vector<Carta> mazo_diamante;
-    private Vector<Carta> mazo_corazon;
+    private Vector<Carta>mazo_corazon;
     private Vector<Deque<Carta>> mazo_restante;
     private int numero_carta[] = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
     private int[] numero_carta_restante;
