@@ -13,7 +13,6 @@ public class DBClass {
     private static final String DATABASE_NAME = "MiDB";
     private static final String DATABASE_TABLE = "solitario";
     private static final int DATABASE_VERSION = 1;
-
     private static final String FILAID = "_id";
     private static final String NOMBRE = "nombre";
     private static final String PARTIDAS = "partidas";
