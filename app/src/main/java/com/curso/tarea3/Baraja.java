@@ -173,10 +173,16 @@ public class Baraja {
         int k = 0;
         for (int i = 0; i < mazo_restante.size(); i++){
             for (int j = 0; j < 4; j++){
+                if(temporal.size() == k){
+                    break;
+                }
                 mazo_restante.elementAt(i).addLast(temporal.elementAt(k));
                 Log.d("REPARTIR_NUMERO ",String.valueOf(mazo_restante.elementAt(i).getLast().getNumero()));
                 Log.d("REPARTIR_PALO ",mazo_restante.elementAt(i).getLast().getPalo());
                 k++;
+            }
+            if (temporal.size() == k){
+                break;
             }
         }
 
