@@ -16,6 +16,7 @@ public class MainActivity extends Activity {
         db = new DBClass(this);
         nueva = new Baraja();
         nueva.inicio();
+        nueva.repartir();
 
     }
     public void agregaJugadores(View view) {

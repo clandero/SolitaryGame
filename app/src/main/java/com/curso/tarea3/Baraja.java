@@ -70,22 +70,26 @@ public class Baraja {
                 Deque<Carta> mazo_temporal = new LinkedList<Carta>();
                 mazo_restante.add(mazo_temporal);
                 mazo_restante.elementAt(j).add(temporal.elementAt(numero_carta_restante[i]));
+                Log.d("NUEVO ",String.valueOf(mazo_restante.elementAt(j).getLast().getNumero()));
+                Log.d("NUEVO ",mazo_restante.elementAt(j).getLast().getPalo());
             }
             else if(i != 0 && (i % 4) == 0){
                 Deque<Carta> mazo_temporal = new LinkedList<Carta>();
                 mazo_restante.add(mazo_temporal);
                 mazo_restante.elementAt(j).add(temporal.elementAt(numero_carta_restante[i]));
+                Log.d("NUEVO ",String.valueOf(mazo_restante.elementAt(j).getLast().getNumero()));
+                Log.d("NUEVO ",mazo_restante.elementAt(j).getLast().getPalo());
                 j++;
             }
             else {
                 mazo_restante.elementAt(j).add(temporal.elementAt(numero_carta_restante[i]));
+                Log.d("NUEVO ",String.valueOf(mazo_restante.elementAt(j).getLast().getNumero()));
+                Log.d("NUEVO ",mazo_restante.elementAt(j).getLast().getPalo());
             }
         }
 
         for (int i = 0; i < mazo_restante.size(); i ++){
             mazo_restante.elementAt(i).getFirst().setEstado("visible");
-            Log.d("AQUIII ",String.valueOf(mazo_restante.elementAt(i).getFirst().getNumero()));
-            Log.d("AQUIII ",mazo_restante.elementAt(i).getFirst().getPalo());
         }
     }
     //guarda las posiciones posibles del mazo_temporal
@@ -160,7 +164,8 @@ public class Baraja {
     public void repartir(){
         Vector<Carta> temporal = new Vector<Carta>();
         for (int i = 0; i < mazo_restante.size(); i++){
-            for (int j = 0; j < mazo_restante.elementAt(i).size(); j++){
+            int k = mazo_restante.elementAt(i).size();
+            for (int j = 0; j < k; j++){
                 temporal.add(mazo_restante.elementAt(i).getFirst());
                 mazo_restante.elementAt(i).removeFirst();
             }
@@ -169,9 +174,12 @@ public class Baraja {
         for (int i = 0; i < mazo_restante.size(); i++){
             for (int j = 0; j < 4; j++){
                 mazo_restante.elementAt(i).addLast(temporal.elementAt(k));
+                Log.d("REPARTIR_NUMERO ",String.valueOf(mazo_restante.elementAt(i).getLast().getNumero()));
+                Log.d("REPARTIR_PALO ",mazo_restante.elementAt(i).getLast().getPalo());
                 k++;
             }
         }
+
     }
     //chequear si el juego se terminó
     public boolean juego_terminado(){
