@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
+    <!--NO CONSIDERAR ESTA LAYOUT EN LA APP-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,6 +63,12 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:hint="Ingrese el nombre a actualizar" />
+        <EditText
+            android:id="@+id/PartidasAgregar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Ingrese el numero de partidas" />
         <EditText
             android:id="@+id/VictoriasAgregar"
             android:layout_width="match_parent"

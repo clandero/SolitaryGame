@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 public class MainActivity extends Activity {
-    DBClass db;
+    // NO CONSIDERAR ESTO COMMO MAIN ACTIVITY, SON EJEMPLOS DE COMO INTERACTUAR CON LA BASE DE DATOS ;^)
+    /*DBClass db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,11 +18,11 @@ public class MainActivity extends Activity {
     public void agregaJugadores(View view) {
 // Agrega los contactos iniciales
         db.abre();
-        db.agregaJugador("Bill Gates", 0,0);
-        db.agregaJugador("Sheldon Cooper", 0,0);
-        db.agregaJugador("Homer Simpson", 0,0);
-        db.agregaJugador("James Bond", 0,0);
-        db.agregaJugador("Jon Snow", 0,0);
+        db.agregaJugador("Bill Gates",0, 0,0);
+        db.agregaJugador("Sheldon Cooper",0, 0,0);
+        db.agregaJugador("Homer Simpson",0, 0,0);
+        db.agregaJugador("James Bond",0, 0,0);
+        db.agregaJugador("Jon Snow",0, 0,0);
         db.cierra();
     }
     public void buscaJugadorPorId(View view) {
@@ -62,16 +63,23 @@ public class MainActivity extends Activity {
 // Actualiza un contacto
         EditText etID = findViewById(R.id.IDAgregar);
         long id = Integer.parseInt(etID.getText().toString());
+
         EditText etNombre = findViewById(R.id.NombreAgregar);
         String nombre = etNombre.getText().toString();
+
+        EditText etPartidas = findViewById(R.id.PartidasAgregar);
+        String partidas = etPartidas.getText().toString();
+
         EditText etVictorias = findViewById(R.id.VictoriasAgregar);
         String victorias = etVictorias.getText().toString();
+
         EditText etDerrotas = findViewById(R.id.DerrotasAgregar);
         String derrotas = etDerrotas.getText().toString();
+
         DisplayToast("Se actualiza el contacto " + id + " con el nombre "
-                + nombre + " victorias: " + victorias + " y derrotas: " + derrotas);
+                + nombre + " partidas: " + partidas + " victorias: " + victorias + " y derrotas: " + derrotas);
         db.abre();
-        if (db.actualizaJugador(id, nombre, Integer.parseInt(victorias), Integer.parseInt(derrotas))) {
+        if (db.actualizaJugador(id, nombre, Integer.parseInt(partidas), Integer.parseInt(victorias), Integer.parseInt(derrotas))) {
             DisplayToast("Actualización exitosa");
         }
         else {
@@ -116,10 +124,11 @@ public class MainActivity extends Activity {
     public void MuestraJugador(Cursor c) {
         DisplayToast("id: " + c.getString(0) + "\n" +
                 "nombre: " + c.getString(1) + "\n" +
-                "victorias: " + c.getString(2) + "\n" +
-                "derrotas: " + c.getString(3) + "\n");
+                "partidas: " + c.getString(2) + "\n" +
+                "victorias: " + c.getString(3) + "\n" +
+                "derrotas: " + c.getString(4) + "\n");
     }
     private void DisplayToast(String mensaje) {
         Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }

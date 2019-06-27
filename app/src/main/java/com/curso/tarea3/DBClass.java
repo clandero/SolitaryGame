@@ -16,11 +16,12 @@ public class DBClass {
 
     private static final String FILAID = "_id";
     private static final String NOMBRE = "nombre";
+    private static final String PARTIDAS = "partidas";
     private static final String VICTORIAS = "victorias";
     private static final String DERROTAS = "derrotas";
     private static final String TAG = "DBClass";
 
-    private static final String DATABASE_CREATE = "create table " + DATABASE_TABLE + "(" + FILAID + " integer primary key autoincrement, " + NOMBRE + " text not null," + VICTORIAS + " integer not null," + DERROTAS + " integer not null);";
+    private static final String DATABASE_CREATE = "create table " + DATABASE_TABLE + "(" + FILAID + " integer primary key autoincrement, " + NOMBRE + " text not null," + PARTIDAS + " integer not null," + VICTORIAS + " integer not null," + DERROTAS + " integer not null);";
     private final Context contexto; // Contexto de la aplicacion
     private DatabaseHelper Helper; // Clase interna para acceso a base de datos SQL
     private SQLiteDatabase db; // La base de datos SQL
@@ -65,9 +66,10 @@ public class DBClass {
         Helper.close();
     }
 
-    public long agregaJugador(String nombre, int victorias, int derrotas){
+    public long agregaJugador(String nombre, int partidas, int victorias, int derrotas){
         ContentValues valores = new ContentValues();
         valores.put(NOMBRE, nombre);
+        valores.put(PARTIDAS, partidas);
         valores.put(VICTORIAS, victorias);
         valores.put(DERROTAS, derrotas);
         return db.insert(DATABASE_TABLE, null, valores);
@@ -76,25 +78,26 @@ public class DBClass {
         return db.delete(DATABASE_TABLE,FILAID + "="+filaID,null)>0;
     }
     public Cursor recuperaJugadores(){
-        return db.query(DATABASE_TABLE,new String[]{FILAID,NOMBRE,VICTORIAS,DERROTAS},null,null,null,null,null);
+        return db.query(DATABASE_TABLE,new String[]{FILAID,NOMBRE,PARTIDAS,VICTORIAS,DERROTAS},null,null,null,null,null);
     }
 
     public Cursor recuperaJugadorPorId(long filaID) throws SQLException {
-        Cursor c = db.query(DATABASE_TABLE, new String[]{FILAID,NOMBRE,VICTORIAS,DERROTAS},FILAID+"="+filaID,null,null,null,null);
+        Cursor c = db.query(DATABASE_TABLE, new String[]{FILAID,NOMBRE,PARTIDAS,VICTORIAS,DERROTAS},FILAID+"="+filaID,null,null,null,null);
         if (c != null){
             c.moveToFirst();
         }
         return c;
     }
-    public boolean actualizaJugador(long filaID, String nombre, int victorias, int derrotas){
+    public boolean actualizaJugador(long filaID, String nombre, int partidas, int victorias, int derrotas){
         ContentValues valores = new ContentValues();
         valores.put(NOMBRE,nombre);
+        valores.put(PARTIDAS,partidas);
         valores.put(VICTORIAS, victorias);
         valores.put(DERROTAS, derrotas);
         return db.update(DATABASE_TABLE,valores,FILAID+"="+filaID,null)>0;
     }
     public Cursor recuperaJugadorPorNombre(String nombre) throws SQLException{
-        Cursor c = db.query(DATABASE_TABLE, new String[]{FILAID,NOMBRE,VICTORIAS,DERROTAS},NOMBRE+"="+ DatabaseUtils.sqlEscapeString(nombre),null,null,null,null);
+        Cursor c = db.query(DATABASE_TABLE, new String[]{FILAID,NOMBRE,PARTIDAS,VICTORIAS,DERROTAS},NOMBRE+"="+ DatabaseUtils.sqlEscapeString(nombre),null,null,null,null);
         if(c != null){
             c.moveToFirst();
         }
