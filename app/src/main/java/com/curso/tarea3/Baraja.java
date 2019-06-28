@@ -125,26 +125,42 @@ public class Baraja {
             if(mazo_restante.elementAt(index_pila_inicio).getFirst().getPalo() == palo_base_destino){
                 if(palo_base_destino == "pica"){
                     if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == base_pica.lastElement().getNumero()){
+                        base_pica.lastElement().setEstado("invisible");
                         base_pica.add(mazo_restante.elementAt(index_pila_inicio).getFirst());
                         mazo_restante.elementAt(index_pila_inicio).removeFirst();
+                        if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
+                            mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
+                        }
                     }
                 }
                 else if (palo_base_destino == "trebol"){
                     if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == base_trebol.lastElement().getNumero()){
+                        base_trebol.lastElement().setEstado("invisible");
                         base_trebol.add(mazo_restante.elementAt(index_pila_inicio).getFirst());
                         mazo_restante.elementAt(index_pila_inicio).removeFirst();
+                        if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
+                            mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
+                        }
                     }
                 }
                 else if (palo_base_destino == "diamante"){
                     if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == base_diamante.lastElement().getNumero()){
+                        base_diamante.lastElement().setEstado("invisible");
                         base_diamante.add(mazo_restante.elementAt(index_pila_inicio).getFirst());
                         mazo_restante.elementAt(index_pila_inicio).removeFirst();
+                        if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
+                            mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
+                        }
                     }
                 }
                 else if (palo_base_destino == "corazon"){
                     if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == base_corazon.lastElement().getNumero()){
+                        base_corazon.lastElement().setEstado("invisible");
                         base_corazon.add(mazo_restante.elementAt(index_pila_inicio).getFirst());
                         mazo_restante.elementAt(index_pila_inicio).removeFirst();
+                        if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
+                            mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
+                        }
                     }
                 }
             }
@@ -154,9 +170,13 @@ public class Baraja {
     public void insertar_a_pila(int index_pila_inicio, int index_pila_destino){
         if((mazo_restante.elementAt(index_pila_inicio).size() > 0) && (mazo_restante.elementAt(index_pila_destino).size() > 0) ){
             if (mazo_restante.elementAt(index_pila_inicio).getFirst().getPalo() == mazo_restante.elementAt(index_pila_destino).getFirst().getPalo()){
-                if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) ==mazo_restante.elementAt(index_pila_destino).getFirst().getNumero()){
+                if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == mazo_restante.elementAt(index_pila_destino).getFirst().getNumero()){
+                    mazo_restante.elementAt(index_pila_destino).getFirst().setEstado("invisible");
                     mazo_restante.elementAt(index_pila_destino).addFirst(mazo_restante.elementAt(index_pila_inicio).getFirst());
                     mazo_restante.elementAt(index_pila_inicio).removeFirst();
+                    if (mazo_restante.elementAt(index_pila_inicio).size() != 0){
+                        mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
+                    }
                 }
             }
         }
@@ -166,6 +186,7 @@ public class Baraja {
         for (int i = 0; i < mazo_restante.size(); i++){
             int k = mazo_restante.elementAt(i).size();
             for (int j = 0; j < k; j++){
+                mazo_restante.elementAt(i).getFirst().setEstado("invisible");
                 temporal.add(mazo_restante.elementAt(i).getFirst());
                 mazo_restante.elementAt(i).removeFirst();
             }
@@ -180,6 +201,9 @@ public class Baraja {
                     mazo_restante.elementAt(i).addLast(temporal.elementAt(k));
                     Log.d("REPARTIR_NUMERO ", String.valueOf(mazo_restante.elementAt(i).getLast().getNumero()));
                     Log.d("REPARTIR_PALO ", mazo_restante.elementAt(i).getLast().getPalo());
+                    if (j == 0){
+                        mazo_restante.elementAt(i).getFirst().setEstado("visible");
+                    }
                     k++;
                 }
             }
