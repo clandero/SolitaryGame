@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:background="@drawable/poker_back"
+    tools:context=".GameActivity">
+
+    <LinearLayout
+        android:id="@+id/contadores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Movimientos: "
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/movimientos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XX"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Cartas correctas: "
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cartas_ubicadas"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XX" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginStart="20dp"
+            android:textStyle="bold"
+            android:text="Tiempo: " />
+
+        <TextView
+            android:id="@+id/tiempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="XX:XX" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/decks"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="5dp"
+        android:layout_below="@+id/contadores"
+        android:orientation="horizontal"
+        android:layout_marginBottom="40dp"
+        >
+
+
+            <ImageView
+                android:id="@+id/shuffle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/media_shuffle" />
+
+            <ImageView
+                android:id="@+id/pica_deck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/back_card" />
+
+            <ImageView
+                android:id="@+id/corazon_deck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/back_card" />
+
+            <ImageView
+                android:id="@+id/trebol_deck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/back_card" />
+
+            <ImageView
+                android:id="@+id/diamante_deck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/back_card" />
+
+
+
+    </LinearLayout>
+
+
+    <GridLayout
+        android:id="@+id/game_decks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/decks"
+        android:layout_centerHorizontal="true"
+        android:columnCount="6"
+        android:orientation="horizontal"
+        android:rowCount="2">
+
+        <ImageView
+            android:id="@+id/deck1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp"
+            android:src="@drawable/back_card" />
+
+        <ImageView
+            android:id="@+id/card_1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp"
+            android:src="@drawable/media_shuffle" />
+
+        <ImageView
+            android:id="@+id/deck2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp"
+
+            android:src="@drawable/back_card" />
+
+        <ImageView
+            android:id="@+id/card_2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp"
+            android:src="@drawable/media_shuffle" />
+
+        <ImageView
+            android:id="@+id/deck3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/deck4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/deck5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="4"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="4"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/deck6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="5"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="5"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/deck7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/deck8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/deck9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/deck10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/deck11"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="4"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_11"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="4"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/deck12"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="5"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+        <ImageView
+            android:id="@+id/card_12"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_row="1"
+            android:layout_column="5"
+            android:layout_gravity="center"
+            android:paddingBottom="2dp" />
+
+    </GridLayout>
+
+</RelativeLayout>
