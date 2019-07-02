@@ -145,8 +145,7 @@
             android:layout_row="0"
             android:layout_column="0"
             android:layout_gravity="center"
-            android:paddingBottom="2dp"
-            android:src="@drawable/back_card" />
+            android:paddingBottom="2dp"/>
 
         <ImageView
             android:id="@+id/card_1"
@@ -155,8 +154,7 @@
             android:layout_row="0"
             android:layout_column="0"
             android:layout_gravity="center"
-            android:paddingBottom="2dp"
-            android:src="@drawable/media_shuffle" />
+            android:paddingBottom="2dp" />
 
         <ImageView
             android:id="@+id/deck2"
@@ -165,9 +163,7 @@
             android:layout_row="0"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:paddingBottom="2dp"
-
-            android:src="@drawable/back_card" />
+            android:paddingBottom="2dp" />
 
         <ImageView
             android:id="@+id/card_2"
@@ -176,8 +172,7 @@
             android:layout_row="0"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:paddingBottom="2dp"
-            android:src="@drawable/media_shuffle" />
+            android:paddingBottom="2dp" />
 
         <ImageView
             android:id="@+id/deck3"
