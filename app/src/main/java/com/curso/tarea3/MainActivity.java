@@ -3,10 +3,23 @@ package com.curso.tarea3;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-public class MainActivity extends Activity {
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
+
+
+
+//public class MainActivity extends Activity {
     // NO CONSIDERAR ESTO COMMO MAIN ACTIVITY, SON EJEMPLOS DE COMO INTERACTUAR CON LA BASE DE DATOS ;^)
     /*DBClass db;
     @Override
@@ -131,4 +144,4 @@ public class MainActivity extends Activity {
     private void DisplayToast(String mensaje) {
         Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_SHORT).show();
     }*/
-}
+//}
