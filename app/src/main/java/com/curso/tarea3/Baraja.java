@@ -19,6 +19,9 @@ public class Baraja {
     private int[] numero_carta_restante;
     private Carta a_1, a_2, a_3, a_4;
     private String palo[] = { "pica", "trebol", "diamante", "corazon"};
+    private Carta ultima_Carta;
+    private Pair<Integer,Integer> pila_a_pila;
+    private Pair<Integer,String> pila_a_base;
 
 
     public void inicio(){
@@ -72,19 +75,22 @@ public class Baraja {
                 mazo_restante.elementAt(j).add(temporal.elementAt(numero_carta_restante[i]));
                 Log.d("NUEVO ",String.valueOf(mazo_restante.elementAt(j).getLast().getNumero()));
                 Log.d("NUEVO ",mazo_restante.elementAt(j).getLast().getPalo());
+                Log.d("NUEVO ",String.valueOf(j));
             }
             else if(i != 0 && (i % 4) == 0){
+                j++;
                 Deque<Carta> mazo_temporal = new LinkedList<Carta>();
                 mazo_restante.add(mazo_temporal);
                 mazo_restante.elementAt(j).add(temporal.elementAt(numero_carta_restante[i]));
                 Log.d("NUEVO ",String.valueOf(mazo_restante.elementAt(j).getLast().getNumero()));
                 Log.d("NUEVO ",mazo_restante.elementAt(j).getLast().getPalo());
-                j++;
+                Log.d("NUEVO ",String.valueOf(j));
             }
             else {
                 mazo_restante.elementAt(j).add(temporal.elementAt(numero_carta_restante[i]));
                 Log.d("NUEVO ",String.valueOf(mazo_restante.elementAt(j).getLast().getNumero()));
                 Log.d("NUEVO ",mazo_restante.elementAt(j).getLast().getPalo());
+                Log.d("NUEVO ",String.valueOf(j));
             }
         }
 
@@ -120,54 +126,71 @@ public class Baraja {
         }
     }
     //insertar carta de una de las 12 pilas a una base
-    public void insertar_a_base(int index_pila_inicio, String palo_base_destino){
+    public boolean insertar_a_base(int index_pila_inicio, String palo_base_destino){
         if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
             if(mazo_restante.elementAt(index_pila_inicio).getFirst().getPalo() == palo_base_destino){
                 if(palo_base_destino == "pica"){
                     if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == base_pica.lastElement().getNumero()){
                         base_pica.lastElement().setEstado("invisible");
                         base_pica.add(mazo_restante.elementAt(index_pila_inicio).getFirst());
+                        ultima_Carta = base_pica.lastElement();
                         mazo_restante.elementAt(index_pila_inicio).removeFirst();
                         if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
                             mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                         }
+                        pila_a_base = new Pair<>(index_pila_inicio,"pica");
+                        pila_a_pila = null;
+                        return true;
                     }
                 }
                 else if (palo_base_destino == "trebol"){
                     if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == base_trebol.lastElement().getNumero()){
                         base_trebol.lastElement().setEstado("invisible");
                         base_trebol.add(mazo_restante.elementAt(index_pila_inicio).getFirst());
+                        ultima_Carta = base_trebol.lastElement();
                         mazo_restante.elementAt(index_pila_inicio).removeFirst();
                         if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
                             mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                         }
+                        pila_a_base = new Pair<>(index_pila_inicio,"trebol");
+                        pila_a_pila = null;
+                        return true;
                     }
                 }
                 else if (palo_base_destino == "diamante"){
                     if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == base_diamante.lastElement().getNumero()){
                         base_diamante.lastElement().setEstado("invisible");
                         base_diamante.add(mazo_restante.elementAt(index_pila_inicio).getFirst());
+                        ultima_Carta = base_diamante.lastElement();
                         mazo_restante.elementAt(index_pila_inicio).removeFirst();
                         if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
                             mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                         }
+                        pila_a_base = new Pair<>(index_pila_inicio,"diamante");
+                        pila_a_pila = null;
+                        return true;
                     }
                 }
                 else if (palo_base_destino == "corazon"){
                     if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == base_corazon.lastElement().getNumero()){
                         base_corazon.lastElement().setEstado("invisible");
                         base_corazon.add(mazo_restante.elementAt(index_pila_inicio).getFirst());
+                        ultima_Carta = base_corazon.lastElement();
                         mazo_restante.elementAt(index_pila_inicio).removeFirst();
                         if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
                             mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                         }
+                        pila_a_base = new Pair<>(index_pila_inicio,"corazon");
+                        pila_a_pila = null;
+                        return true;
                     }
                 }
             }
         }
+        return false;
     }
     //inserción entre cartas de las 12 pilas.
-    public void insertar_a_pila(int index_pila_inicio, int index_pila_destino){
+    public boolean insertar_a_pila(int index_pila_inicio, int index_pila_destino){
         if((mazo_restante.elementAt(index_pila_inicio).size() > 0) && (mazo_restante.elementAt(index_pila_destino).size() > 0) ){
             if (mazo_restante.elementAt(index_pila_inicio).getFirst().getPalo() == mazo_restante.elementAt(index_pila_destino).getFirst().getPalo()){
                 if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == mazo_restante.elementAt(index_pila_destino).getFirst().getNumero()){
@@ -177,9 +200,13 @@ public class Baraja {
                     if (mazo_restante.elementAt(index_pila_inicio).size() != 0){
                         mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                     }
+                    pila_a_pila = new Pair<>(index_pila_inicio,index_pila_destino);
+                    pila_a_base = null;
+                    return true;
                 }
             }
         }
+        return false;
     }
     public void repartir(){
         Vector<Carta> temporal = new Vector<Carta>();
@@ -239,6 +266,7 @@ public class Baraja {
     public Carta get_carta_de_pila(int i){
         return mazo_restante.elementAt(i).getFirst();
     }
+
     //se obtiene la última carta de una base especifica
     public Carta get_carta_de_base(String pinta){
         if(pinta == "pica"){
@@ -254,4 +282,14 @@ public class Baraja {
             return base_corazon.lastElement();
         }
     }
+
+    public boolean pila_vacia(int index_pila){
+        if (mazo_restante.elementAt(index_pila).size() == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
+
