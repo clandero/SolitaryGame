@@ -235,4 +235,23 @@ public class Baraja {
             }
         }
     }
+    //se obtiene la primera carta de alguna de las 12 pilas
+    public Carta get_carta_de_pila(int i){
+        return mazo_restante.elementAt(i).getFirst();
+    }
+    //se obtiene la última carta de una base especifica
+    public Carta get_carta_de_base(String pinta){
+        if(pinta == "pica"){
+            return base_pica.lastElement();
+        }
+        else if (pinta == "trebol"){
+            return  base_trebol.lastElement();
+        }
+        else if (pinta == "diamante"){
+            return base_diamante.lastElement();
+        }
+        else{
+            return base_corazon.lastElement();
+        }
+    }
 }
