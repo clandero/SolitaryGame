@@ -30,6 +30,8 @@ public class Baraja {
         base_trebol = new Vector<Carta>();
         base_diamante = new Vector<Carta>();;
         base_corazon = new Vector<Carta>();
+        pila_a_pila = null;
+        pila_a_base = null;
         a_1 = new Carta();
         a_1.setNumero(1);
         a_1.setPalo("pica");
@@ -316,6 +318,7 @@ public class Baraja {
                 base_corazon.remove(base_corazon.size()-1);
                 base_corazon.lastElement().setEstado("visible");
             }
+            pila_a_base = null;
             return true;
         }
         else if (pila_a_pila != null){
@@ -323,6 +326,7 @@ public class Baraja {
             mazo_restante.elementAt(pila_a_pila.first).addFirst(ultima_Carta);
             mazo_restante.elementAt(pila_a_pila.second).removeFirst();
             mazo_restante.elementAt(pila_a_pila.second).getFirst().setEstado("visible");
+            pila_a_pila = null;
             return true;
         }
         return false;
