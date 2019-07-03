@@ -298,24 +298,31 @@ public class Baraja {
             return false;
         }
         else if (pila_a_base != null){
+            mazo_restante.elementAt(pila_a_base.first).getFirst().setEstado("invisible");
             mazo_restante.elementAt(pila_a_base.first).addFirst(ultima_Carta);
             if (pila_a_base.second == "pica"){
                 base_pica.remove(base_pica.size()-1);
+                base_pica.lastElement().setEstado("visible");
             }
             else if (pila_a_base.second == "trebol"){
                 base_trebol.remove(base_trebol.size()-1);
+                base_trebol.lastElement().setEstado("visible");
             }
             else if (pila_a_base.second == "diamante"){
                 base_diamante.remove(base_diamante.size()-1);
+                base_diamante.lastElement().setEstado("visible");
             }
             else if (pila_a_base.second == "corazon"){
                 base_corazon.remove(base_corazon.size()-1);
+                base_corazon.lastElement().setEstado("visible");
             }
             return true;
         }
         else if (pila_a_pila != null){
+            mazo_restante.elementAt(pila_a_pila.first).getFirst().setEstado("invisible");
             mazo_restante.elementAt(pila_a_pila.first).addFirst(ultima_Carta);
             mazo_restante.elementAt(pila_a_pila.second).removeFirst();
+            mazo_restante.elementAt(pila_a_pila.second).getFirst().setEstado("visible");
             return true;
         }
         return false;
