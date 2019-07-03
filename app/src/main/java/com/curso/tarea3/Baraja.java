@@ -138,7 +138,7 @@ public class Baraja {
                         if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
                             mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                         }
-                        pila_a_base = new Pair<>(index_pila_inicio,"pica");
+                        pila_a_base = new Pair<Integer, String>(index_pila_inicio,"pica");
                         pila_a_pila = null;
                         return true;
                     }
@@ -152,7 +152,7 @@ public class Baraja {
                         if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
                             mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                         }
-                        pila_a_base = new Pair<>(index_pila_inicio,"trebol");
+                        pila_a_base = new Pair<Integer, String>(index_pila_inicio,"trebol");
                         pila_a_pila = null;
                         return true;
                     }
@@ -166,7 +166,7 @@ public class Baraja {
                         if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
                             mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                         }
-                        pila_a_base = new Pair<>(index_pila_inicio,"diamante");
+                        pila_a_base = new Pair<Integer, String>(index_pila_inicio,"diamante");
                         pila_a_pila = null;
                         return true;
                     }
@@ -180,7 +180,7 @@ public class Baraja {
                         if(mazo_restante.elementAt(index_pila_inicio).size() != 0){
                             mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                         }
-                        pila_a_base = new Pair<>(index_pila_inicio,"corazon");
+                        pila_a_base = new Pair<Integer, String>(index_pila_inicio,"corazon");
                         pila_a_pila = null;
                         return true;
                     }
@@ -196,11 +196,12 @@ public class Baraja {
                 if ((mazo_restante.elementAt(index_pila_inicio).getFirst().getNumero() - 1) == mazo_restante.elementAt(index_pila_destino).getFirst().getNumero()){
                     mazo_restante.elementAt(index_pila_destino).getFirst().setEstado("invisible");
                     mazo_restante.elementAt(index_pila_destino).addFirst(mazo_restante.elementAt(index_pila_inicio).getFirst());
+                    ultima_Carta = mazo_restante.elementAt(index_pila_destino).getFirst();
                     mazo_restante.elementAt(index_pila_inicio).removeFirst();
                     if (mazo_restante.elementAt(index_pila_inicio).size() != 0){
                         mazo_restante.elementAt(index_pila_inicio).getFirst().setEstado("visible");
                     }
-                    pila_a_pila = new Pair<>(index_pila_inicio,index_pila_destino);
+                    pila_a_pila = new Pair<Integer, Integer>(index_pila_inicio,index_pila_destino);
                     pila_a_base = null;
                     return true;
                 }
@@ -290,6 +291,34 @@ public class Baraja {
         else{
             return false;
         }
+    }
+
+    public boolean revertir(){
+        if (pila_a_base == null && pila_a_pila == null){
+            return false;
+        }
+        else if (pila_a_base != null){
+            mazo_restante.elementAt(pila_a_base.first).addFirst(ultima_Carta);
+            if (pila_a_base.second == "pica"){
+                base_pica.remove(base_pica.size()-1);
+            }
+            else if (pila_a_base.second == "trebol"){
+                base_trebol.remove(base_trebol.size()-1);
+            }
+            else if (pila_a_base.second == "diamante"){
+                base_diamante.remove(base_diamante.size()-1);
+            }
+            else if (pila_a_base.second == "corazon"){
+                base_corazon.remove(base_corazon.size()-1);
+            }
+            return true;
+        }
+        else if (pila_a_pila != null){
+            mazo_restante.elementAt(pila_a_pila.first).addFirst(ultima_Carta);
+            mazo_restante.elementAt(pila_a_pila.second).removeFirst();
+            return true;
+        }
+        return false;
     }
 }
 
