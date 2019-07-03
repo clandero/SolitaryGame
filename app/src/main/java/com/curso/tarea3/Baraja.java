@@ -213,9 +213,9 @@ public class Baraja {
         for (int i = 0; i < mazo_restante.size(); i++){
             int k = mazo_restante.elementAt(i).size();
             for (int j = 0; j < k; j++){
-                mazo_restante.elementAt(i).getFirst().setEstado("invisible");
-                temporal.add(mazo_restante.elementAt(i).getFirst());
-                mazo_restante.elementAt(i).removeFirst();
+                mazo_restante.elementAt(i).getLast().setEstado("invisible");
+                temporal.add(mazo_restante.elementAt(i).getLast());
+                mazo_restante.elementAt(i).removeLast();
             }
         }
         int k = 0;
@@ -225,10 +225,10 @@ public class Baraja {
                     break;
                 }
                 else {
-                    mazo_restante.elementAt(i).addLast(temporal.elementAt(k));
-                    Log.d("REPARTIR_NUMERO ", String.valueOf(mazo_restante.elementAt(i).getLast().getNumero()));
-                    Log.d("REPARTIR_PALO ", mazo_restante.elementAt(i).getLast().getPalo());
-                    if (j == 0){
+                    mazo_restante.elementAt(i).addFirst(temporal.elementAt(k));
+                    Log.d("REPARTIR_NUMERO ", String.valueOf(mazo_restante.elementAt(i).getFirst().getNumero()));
+                    Log.d("REPARTIR_PALO ", mazo_restante.elementAt(i).getFirst().getPalo());
+                    if (j == 3){
                         mazo_restante.elementAt(i).getFirst().setEstado("visible");
                     }
                     k++;

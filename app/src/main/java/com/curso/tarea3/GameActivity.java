@@ -57,10 +57,10 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        if (savedInstanceState == null) {
-            baraja = new Baraja();
-            baraja.inicio();
-        }
+
+        baraja = new Baraja();
+        baraja.inicio();
+
 
         if(mStartTime==0L){
             mStartTime= SystemClock.uptimeMillis();
@@ -126,6 +126,7 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(GameActivity.this, "MOVIDA A BASE CON EXITO", Toast.LENGTH_SHORT).show();
                         corazon.setImageResource(CARD_IMAGE[pila_aux][cartaux.getNumero()- 2]);
                         paint();
+                        cartas.setText(Integer.toString(baraja.cartas_en_bases()));
                         if (baraja.juego_terminado()){
 
                             }
@@ -136,6 +137,8 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(GameActivity.this,"Mov no realizado",Toast.LENGTH_SHORT).show();}
 
                     movements++;
+                    movimientos.setText(Integer.toString(movements));
+
                 }
                 else
                     Toast.makeText(GameActivity.this,"Nada que hacer aun", Toast.LENGTH_SHORT).show();
@@ -156,6 +159,10 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(GameActivity.this, "MOVIDA A BASE CON EXITO", Toast.LENGTH_SHORT).show();
                         pica.setImageResource(CARD_IMAGE[pila_aux][cartaux.getNumero()- 2]);
                         paint();
+                        cartas.setText(Integer.toString(baraja.cartas_en_bases()));
+                        if (baraja.juego_terminado()){
+
+                        }
                     }
 
                     else{
@@ -163,6 +170,8 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(GameActivity.this,"Mov no realizado",Toast.LENGTH_SHORT).show();}
 
                     movements++;
+                    movimientos.setText(Integer.toString(movements));
+
                 }
                 else
                     Toast.makeText(GameActivity.this,"Nada que hacer aun", Toast.LENGTH_SHORT).show();
@@ -183,6 +192,10 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(GameActivity.this, "MOVIDA A BASE CON EXITO", Toast.LENGTH_SHORT).show();
                         trebol.setImageResource(CARD_IMAGE[pila_aux][cartaux.getNumero()- 2]);
                         paint();
+                        cartas.setText(Integer.toString(baraja.cartas_en_bases()));
+                        if (baraja.juego_terminado()){
+
+                        }
                     }
 
                     else{
@@ -190,6 +203,8 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(GameActivity.this,"Mov no realizado",Toast.LENGTH_SHORT).show();}
 
                     movements++;
+                    movimientos.setText(Integer.toString(movements));
+
                 }
                 else
                     Toast.makeText(GameActivity.this,"Nada que hacer aun", Toast.LENGTH_SHORT).show();
@@ -210,6 +225,10 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(GameActivity.this, "MOVIDA A BASE CON EXITO", Toast.LENGTH_SHORT).show();
                         diamante.setImageResource(CARD_IMAGE[pila_aux][cartaux.getNumero()- 2]);
                         paint();
+                        cartas.setText(Integer.toString(baraja.cartas_en_bases()));
+                        if (baraja.juego_terminado()){
+
+                        }
                     }
 
                     else{
@@ -217,6 +236,7 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(GameActivity.this,"Mov no realizado",Toast.LENGTH_SHORT).show();}
 
                     movements++;
+                    movimientos.setText(Integer.toString(movements));
                 }
                 else
                     Toast.makeText(GameActivity.this,"Nada que hacer aun", Toast.LENGTH_SHORT).show();
@@ -260,6 +280,7 @@ public class GameActivity extends AppCompatActivity {
                     esperando_mov = 0;
                     baraja.insertar_a_pila(pila_llamada, i);
                     movements++;
+                    movimientos.setText(Integer.toString(movements));
                 }
 
             }
